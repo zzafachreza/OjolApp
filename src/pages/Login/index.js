@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,6 +12,14 @@ import colors from '../../config/colors';
 import {Button} from '../../components/atoms';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 export default function Login({navigation}) {
+  useEffect(() => {
+    console.log('hello');
+  }, []);
+
+  const sendData = () => {
+    console.log('data yang dikirim');
+  };
+
   return (
     <SafeAreaView>
       <TouchableOpacity
@@ -63,7 +71,7 @@ export default function Login({navigation}) {
             }}
           />
         </View>
-        <Button title="Login" />
+        <Button title="Login" onPress={sendData} />
       </View>
     </SafeAreaView>
   );
