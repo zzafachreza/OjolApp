@@ -1,29 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import colors from '../../config/colors';
 import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import {_storeData, getData} from '../../api/storage';
-
-export default function Splash({navigation}) {
+export default function Home({navigation}) {
   const {form} = useSelector((state) => state.reducerLogin);
 
-  const dispatch = useDispatch();
-  // console.log(form);
+  const [username, setusername] = useState(null);
 
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('username');
       if (value !== null) {
         // value previously stored
-        setTimeout(() => {
-          navigation.replace('Home');
-        }, 2000);
-      } else {
-        setTimeout(() => {
-          navigation.replace('WelcomeAuth');
-        }, 2000);
+        setusername(value);
       }
     } catch (e) {
       // error reading value
@@ -51,16 +42,7 @@ export default function Splash({navigation}) {
           fontSize: 24,
           fontWeight: 'bold',
         }}>
-        Ojek Online {form.username}
-      </Text>
-      <Text
-        style={{
-          fontSize: 12,
-          fontWeight: 'bold',
-          marginTop: 20,
-          color: colors.primary,
-        }}>
-        mudah, murah dan cepat
+        SELAMAT DATANG {username}
       </Text>
     </View>
   );
