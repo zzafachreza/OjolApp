@@ -8,6 +8,7 @@ import colors from '../../config/colors';
 import { setForm } from '../../redux';
 
 export default function Register({ navigation }) {
+  
 	const { form } = useSelector((state) => state.reducerRegister);
 	const dispatch = useDispatch();
 
